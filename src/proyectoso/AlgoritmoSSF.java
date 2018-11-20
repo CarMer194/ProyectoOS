@@ -16,23 +16,32 @@ import java.util.ArrayList;
 public class AlgoritmoSSF {
 
     int head;
-    ArrayList<Integer> desplazamiento;
-    boolean revisar = false;
-    Stack<Integer> lista;
+    int desplazamiento;
+    Stack <Integer> lista;
+    Stack <Integer> des;
 
-    public AlgoritmoSSF(int head, ArrayList<Integer> desplazamiento, Stack<Integer> lista) {
+    public AlgoritmoSSF(int head, Stack<Integer> lista, Stack<Integer> des ) {
         this.head = head;
         lista = new Stack();
-        desplazamiento = new ArrayList();
+        des = new Stack();
+    }
+    
+    public AlgoritmoSSF(){
+        
     }
 
-    public  void add(int num) {
+    public void add(int num) {
         lista.add(num);
     }
 
-    void desplazamiento(Stack<Integer> list, int head) {
+    void desplazamiento(Integer[] intArr, int head) {
         //desplazamiento: restar primera posición del stack menos head
-        //desplazamiento = Math.abs(list.peek() - head);
+        for(Integer i : intArr){
+            des.push(Math.abs(i - head));
+            //int a = Math.abs(i - head);
+            System.out.println("Elementos: " + des);
+        }
+
     }
 
     int min() {
@@ -47,6 +56,8 @@ public class AlgoritmoSSF {
     }
 
     public static void main(String[] args) {
- 
+        AlgoritmoSSF f = new AlgoritmoSSF ();
+        Integer[] intArr = {1001,1002,1003,1004};
+        f.desplazamiento(intArr, 50);
     }
 }
