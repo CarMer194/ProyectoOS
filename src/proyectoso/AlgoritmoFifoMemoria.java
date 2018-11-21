@@ -26,7 +26,7 @@ public class AlgoritmoFifoMemoria {
     }
     
     
-    void AgregarElemento(Integer numero){
+    void agregarElemento(Integer numero){
         if(cola.search(numero)==-1 && contador<4){
             cola.add(numero);
             disco.put(contadorHash, numero);
@@ -60,6 +60,17 @@ public class AlgoritmoFifoMemoria {
     
     void escritura(Integer num){
         bitM.replace(num, Boolean.TRUE);
+    }
+    
+    void peticiones(Stack<String> tipo, Stack<Integer> num){
+        while(!tipo.empty() && !num.empty() ){
+            if(tipo.pop().equalsIgnoreCase("L")){
+                agregarElemento(num.pop());
+            }
+            if(tipo.pop().equalsIgnoreCase("E")){
+                escritura(num.pop());
+            }
+        }
     }
     
     void getPaginas(){
