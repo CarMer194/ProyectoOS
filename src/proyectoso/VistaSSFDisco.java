@@ -5,19 +5,16 @@
  */
 package proyectoso;
 
-import javax.swing.DefaultListModel;
-
-
 /**
  *
  * @author daniel
  */
-public class VistaSSFdisco extends javax.swing.JFrame {
+public class VistaSSFDisco extends javax.swing.JPanel {
 
     /**
-     * Creates new form VistaSSFdisco
+     * Creates new form NewJPanel
      */
-    public VistaSSFdisco() {
+    public VistaSSFDisco() {
         initComponents();
     }
 
@@ -30,9 +27,10 @@ public class VistaSSFdisco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        head1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         enviarData = new javax.swing.JTextField();
         btnTrack = new javax.swing.JButton();
         head = new javax.swing.JTextField();
@@ -41,26 +39,12 @@ public class VistaSSFdisco extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         recibirData = new javax.swing.JTextField();
-        head1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1.setText("Agregar Track:");
 
         jButton1.setText("Atras");
+
+        jLabel2.setText("Head:");
 
         btnTrack.setText("Add");
         btnTrack.addActionListener(new java.awt.event.ActionListener() {
@@ -103,14 +87,11 @@ public class VistaSSFdisco extends javax.swing.JFrame {
                 "0", "100", "150", "200"
             }
         ));
+        jTable2.setInheritsPopupMenu(true);
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel1.setText("Agregar Track:");
-
-        jLabel2.setText("Head:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -140,8 +121,8 @@ public class VistaSSFdisco extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(98, 98, 98)
                                 .addComponent(head1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(66, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,57 +144,22 @@ public class VistaSSFdisco extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTrackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackActionPerformed
+
+    }//GEN-LAST:event_btnTrackActionPerformed
 
     private void headActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headActionPerformed
 
     }//GEN-LAST:event_headActionPerformed
-    
-    private void btnTrackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackActionPerformed
-    }//GEN-LAST:event_btnTrackActionPerformed
 
     private void btnHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeadActionPerformed
         head1.setText(head.getText());
     }//GEN-LAST:event_btnHeadActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaSSFdisco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaSSFdisco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaSSFdisco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaSSFdisco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaSSFdisco().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHead;
@@ -225,9 +171,7 @@ public class VistaSSFdisco extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField recibirData;
     // End of variables declaration//GEN-END:variables
