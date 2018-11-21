@@ -15,11 +15,13 @@ import java.util.HashMap;
 public class AlgoritmoFifoMemoria {
     Stack<Integer> cola;
     HashMap <Integer,Integer> disco;
+    HashMap <Integer,Boolean> bitM;
     int contador, contadorHash, heat, fallos;
 
     public AlgoritmoFifoMemoria() {
         cola= new Stack();
         disco= new HashMap<Integer,Integer>();
+        bitM= new HashMap<Integer,Boolean>();
         contador=0;contadorHash=0;heat=0;fallos=0;
     }
     
@@ -28,6 +30,7 @@ public class AlgoritmoFifoMemoria {
         if(cola.search(numero)==-1 && contador<4){
             cola.add(numero);
             disco.put(contadorHash, numero);
+            bitM.put(numero, Boolean.FALSE);
             contador++;
             contadorHash++;
             fallos++;
@@ -35,6 +38,7 @@ public class AlgoritmoFifoMemoria {
         else if(cola.search(numero)==-1 && contador==4){
             if(!disco.containsValue(numero)){
                 disco.put(contadorHash, cola.pop());
+                bitM.put(numero, Boolean.FALSE);
             }
             else{
                 cola.pop();
@@ -45,8 +49,17 @@ public class AlgoritmoFifoMemoria {
             fallos++;
         }
         else{
-            heat++;
+            if(disco.containsValue(numero) && bitM.get(numero)==true ){
+                bitM.replace(numero, Boolean.FALSE);
+            }
+            else{
+                heat++;
+            }
         }
+    }
+    
+    void escritura(Integer num){
+        bitM.replace(num, Boolean.TRUE);
     }
     
     void getPaginas(){
