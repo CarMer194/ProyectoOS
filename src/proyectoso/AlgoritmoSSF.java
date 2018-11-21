@@ -17,26 +17,27 @@ public class AlgoritmoSSF {
 
     int head;
     int desplazamiento;
-    Stack <Integer> lista;
-    Stack <Integer> des;
+    Stack<Integer> lista;
+    Stack<Integer> des;
 
-    public AlgoritmoSSF(int head, Stack<Integer> lista, Stack<Integer> des ) {
+    public AlgoritmoSSF(int head, int desplazamiento) {
         this.head = head;
+        this.desplazamiento = desplazamiento;
         lista = new Stack();
         des = new Stack();
     }
-    
-    public AlgoritmoSSF(){
-        
+
+    public AlgoritmoSSF() {
+
     }
 
     public void add(int num) {
         lista.add(num);
     }
 
-    void desplazamiento(Integer[] intArr, int head) {
+    void desplazamiento(Stack<Integer> lista, int head) {
         //desplazamiento: restar primera posición del stack menos head
-        for(Integer i : intArr){
+        for (Integer i : lista) {
             des.push(Math.abs(i - head));
             //int a = Math.abs(i - head);
             System.out.println("Elementos: " + des);
@@ -44,20 +45,17 @@ public class AlgoritmoSSF {
 
     }
 
-    int min() {
-        //encontrar minimo desplazamiento
-        return 0;
-    }
-    
-    public void buscar(){
-        //luego de encontrar minimo desplazamiento, ubicar la posicion del stack (con min desplazamiento)
-        //en la tabla graficamente, hacer que ese numero sea el nuevo head y luego sacarlo del stack
-        //repetir desplazamiento, minimo y buscar hasta agotar stack
+    int min(Stack<Integer> lista) {
+        int value = 0;
+        for (Integer i : lista) {
+            if (value < i) {
+                value = i;
+            }
+        }
+        return value;
     }
 
-    public static void main(String[] args) {
-        AlgoritmoSSF f = new AlgoritmoSSF ();
-        Integer[] intArr = {1001,1002,1003,1004};
-        f.desplazamiento(intArr, 50);
+    public void buscar() {
+        
     }
 }
