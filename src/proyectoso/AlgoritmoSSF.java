@@ -15,34 +15,34 @@ import java.util.ArrayList;
  */
 public class AlgoritmoSSF {
 
-    int head;
-    int desplazamiento;
-    Stack<Integer> lista;
-    Stack<Integer> des;
+    public int head;
+    public int desplazamiento;
+    public Stack<Integer> lista;
+    public Stack<Integer> des;
+    public Stack<Integer> resultado;
 
     public AlgoritmoSSF(int head, int desplazamiento) {
         this.head = head;
         this.desplazamiento = desplazamiento;
-        lista = new Stack();
-        des = new Stack();
+        lista = new Stack<Integer>();
+        des = new Stack<Integer>();
+        resultado = new Stack<Integer>();
     }
 
     public AlgoritmoSSF() {
-
+        lista = new Stack<Integer>();
+        des = new Stack<Integer>();
+        resultado = new Stack<Integer>();
     }
 
     public void add(int num) {
-        lista.add(num);
+        lista.push(num);
     }
 
-    void desplazamiento(Stack<Integer> lista, int head) {
-        //desplazamiento: restar primera posición del stack menos head
-        for (Integer i : lista) {
-            des.push(Math.abs(i - head));
-            //int a = Math.abs(i - head);
-            System.out.println("Elementos: " + des);
+    public void desplazamiento(Stack<Integer> lista, int head) {
+        for (Integer i : lista){
+            des.push(Math.abs(i-head));
         }
-
     }
 
     int min(Stack<Integer> lista) {
@@ -55,7 +55,16 @@ public class AlgoritmoSSF {
         return value;
     }
 
-    public void buscar() {
-        
+    public void buscar(Stack<Integer> lista, int head) {
+        int recorrido = 0;
+        for(int i = 0; i< lista.size(); i++){
+            resultado.push(head);
+            desplazamiento(lista,head);
+            int index = min(des);
+            recorrido += index;
+            head = index;
+            lista.pop();
+        }
+        //resultado
     }
 }
