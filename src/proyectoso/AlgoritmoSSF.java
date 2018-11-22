@@ -17,55 +17,61 @@ public class AlgoritmoSSF {
 
     public int head;
     public int desplazamiento;
-    public Stack<Integer> lista;
-    public Stack<Integer> des;
-    public Stack<Integer> resultado;
+    public ArrayList<Integer> lista;
+    public ArrayList<Integer> des;
+    public ArrayList<Integer> resultado;
 
     public AlgoritmoSSF(int head, int desplazamiento) {
         this.head = head;
         this.desplazamiento = desplazamiento;
-        lista = new Stack<Integer>();
-        des = new Stack<Integer>();
-        resultado = new Stack<Integer>();
+        lista = new ArrayList<Integer>();
+        des = new ArrayList<Integer>();
+        resultado = new ArrayList<Integer>();
     }
 
     public AlgoritmoSSF() {
-        lista = new Stack<Integer>();
-        des = new Stack<Integer>();
-        resultado = new Stack<Integer>();
+        lista = new ArrayList<Integer>();
+        des = new ArrayList<Integer>();
+        resultado = new ArrayList<Integer>();
     }
 
     public void add(int num) {
-        lista.push(num);
+        lista.add(num);
     }
 
-    public void desplazamiento(Stack<Integer> lista, int head) {
+    public void desplazamiento(ArrayList<Integer> lista, int head) {
         for (Integer i : lista){
-            des.push(Math.abs(i-head));
+            des.add(Math.abs(i-head));
+            System.out.println("Des: " + des);
         }
     }
 
-    int min(Stack<Integer> lista) {
-        int valor = 0, value = 0;
-        for (Integer i : lista) {
-            if (value < i) {
-                value = i;
-                valor = lista.indexOf(value);
+    int min(ArrayList<Integer> lista) {
+        int value = Integer.MAX_VALUE;
+        for (int i = 0 ; i < lista.size(); i++) {
+            if (value > lista.get(i)) {
+                value = lista.get(i);
             }
         }
-        return valor;
+        return value;
     }
 
-    public void buscar(Stack<Integer> lista, int head) {
+    public void buscar(ArrayList<Integer> lista, int head) {
         int recorrido = 0;
-        for(int i = 0; i< lista.size(); i++){
-            resultado.push(head);
+        resultado.add(head);
+        int a = lista.size();
+        for(int i = 0; i< a; i++){
             desplazamiento(lista,head);
             int index = min(des);
-            recorrido += lista.indexOf(index);
-            head = lista.indexOf(index);
-            //lista.pop();
+            System.out.println("Index: " + index);
+            recorrido += index;
+            head = lista.get(des.indexOf(index));
+            resultado.add(head);
+            lista.remove(des.indexOf(index));
+            des.clear();
+            System.out.println("Head: " + head);
+            //lista.remove(head);
         }
-        //resultado
+        System.out.println("Lista: " + resultado);
     }
 }

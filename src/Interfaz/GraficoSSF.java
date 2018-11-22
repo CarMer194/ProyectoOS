@@ -19,13 +19,15 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import proyectoso.AlgoritmoSSF;
 /**
  *
  * @author daniel
  */
 public class GraficoSSF extends ImageIcon{
-    
+    AlgoritmoSSF ssf;
     public GraficoSSF (Dimension d){
+        ssf = new AlgoritmoSSF();
         XYDataset xydataset = xyDataset();
         JFreeChart jfreechart = ChartFactory.createXYLineChart(
         "Ingresos semanales" , "1ra semana del mes de Junio", "Ingresos en euros",  
