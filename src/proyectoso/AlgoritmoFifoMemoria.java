@@ -7,19 +7,21 @@ package proyectoso;
 
 import java.util.Stack;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
  * @author Carlos
  */
 public class AlgoritmoFifoMemoria {
-    Stack<Integer> cola;
+    LinkedList<Integer> cola;
     HashMap <Integer,Integer> disco;
     HashMap <Integer,Boolean> bitM;
     int contador, contadorHash, heat, fallos,limite;
 
     public AlgoritmoFifoMemoria() {
-        cola= new Stack();
+        cola= new LinkedList();
         disco= new HashMap<Integer,Integer>();
         bitM= new HashMap<Integer,Boolean>();
         contador=0;contadorHash=0;heat=0;fallos=0;
@@ -27,24 +29,26 @@ public class AlgoritmoFifoMemoria {
     
     
     public void agregarElemento(Integer numero){
-        if(cola.search(numero)==-1 && contador<limite){
+        System.out.println("numero: "+numero);
+        if(!cola.contains(cola) && contador<limite){
             cola.add(numero);
-            disco.put(contadorHash, numero);
-            bitM.put(numero, Boolean.FALSE);
-            contador++;
-            contadorHash++;
+            if(!disco.containsValue(numero)){
+                disco.put(contadorHash, numero);
+                bitM.put(numero, Boolean.FALSE);
+                contadorHash++;
+                System.out.println("agrego hash");
+            }
+            contador++; 
             fallos++;
             System.out.println("Entro 1");
         }
-        else if(cola.search(numero)==-1 && contador==limite){
+        else if(!cola.contains(numero) && contador==limite){
             System.out.println("Entro 2");
             if(!disco.containsValue(numero)){
-                disco.put(contadorHash, cola.pop());
+                disco.put(contadorHash, numero);
                 bitM.put(numero, Boolean.FALSE);
             }
-            else{
-                cola.pop();
-            }
+            cola.poll();
             cola.add(numero);
             //contador++;
             contadorHash++;
@@ -93,18 +97,19 @@ public class AlgoritmoFifoMemoria {
         this.limite = limite;
     }
 
-    public Stack<Integer> getCola() {
-        return cola;
-    }
-
-    public void setCola(Stack<Integer> cola) {
-        this.cola = cola;
-    }
-
+    
     public HashMap<Integer, Integer> getDisco() {
         return disco;
     }
 
+    public LinkedList<Integer> getCola() {
+        return cola;
+    }
+
+    public void setCola(LinkedList<Integer> cola) {
+        this.cola = cola;
+    }
+    
     public void setDisco(HashMap<Integer, Integer> disco) {
         this.disco = disco;
     }
@@ -123,6 +128,18 @@ public class AlgoritmoFifoMemoria {
 
     public void setContador(int contador) {
         this.contador = contador;
+    }
+
+    public int getContadorHash() {
+        return contadorHash;
+    }
+
+    public int getHeat() {
+        return heat;
+    }
+
+    public int getFallos() {
+        return fallos;
     }
     
     

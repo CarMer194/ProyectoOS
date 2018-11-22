@@ -5,6 +5,11 @@
  */
 package GUI;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,9 +25,10 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
     DefaultTableModel model;
     DefaultTableModel memoriaModel;
     DefaultTableModel discoModel;
-    Stack<Integer> colapeticiones;
-    Stack<String> tipocolapeticiones;
+    Queue<Integer> colapeticiones;
+    Queue<String> tipocolapeticiones;
     AlgoritmoFifoMemoria fifoA;
+    
 
     public boolean isAtras() {
         return atras;
@@ -41,8 +47,8 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
         memoriaModel=(DefaultTableModel) paginasMemoria.getModel();
         discoModel= (DefaultTableModel) paginaDisco.getModel();
         fifoA= new AlgoritmoFifoMemoria();
-        tipocolapeticiones= new Stack();
-        colapeticiones=new Stack();
+        tipocolapeticiones= new LinkedList();
+        colapeticiones=new LinkedList();
     }
     
     /**
@@ -309,35 +315,45 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         fifoA.setLimite((Integer) numeropaginas.getSelectedItem());
         //System.out.println("limite: "+fifoA.getLimite());
-        while(!tipocolapeticiones.isEmpty() && !colapeticiones.empty()){
+        while(!tipocolapeticiones.isEmpty() && !colapeticiones.isEmpty()){
             for(int i= memoriaModel.getRowCount()-1; i>-1;i--){
                 memoriaModel.removeRow(i);
+            }
+            for(int i= discoModel.getRowCount()-1; i>-1;i--){
+                discoModel.removeRow(i);
             }
             //System.out.println("contador "+memoriaModel.getRowCount());
             for(int i=0; i<memoriaModel.getRowCount();i++){
                 memoriaModel.removeRow(i);
             }
-            String temp=tipocolapeticiones.pop();
+            String temp=tipocolapeticiones.poll();
             if(temp.equalsIgnoreCase("Lectura")){
-                fifoA.agregarElemento(colapeticiones.pop());
+                fifoA.agregarElemento(colapeticiones.poll());
             }
             if(temp.equalsIgnoreCase("Escritura")){
-                fifoA.escritura(colapeticiones.pop());
+                fifoA.escritura(colapeticiones.poll());
             }
-            System.out.println(fifoA.getContador()+" ");
+            System.out.println(fifoA.getContador());
+            
+            Iterator<Map.Entry <Integer,Integer>> iterador = fifoA.getDisco().entrySet().iterator();
             for(int i=0;i<fifoA.getContador();i++){
                 memoriaModel.insertRow(memoriaModel.getRowCount(), new Object[]{fifoA.getCola().get(i),fifoA.getBitM().get(fifoA.getCola().get(i))});
             }
-            //discoModel.insertRow(discoModel.getRowCount(), new Object[]{});
+            
+            while(iterador.hasNext()){
+                HashMap.Entry<Integer,Integer> entry = iterador.next();
+                discoModel.insertRow(discoModel.getRowCount(), new Object[]{entry.getValue(), fifoA.getBitM().get(entry.getValue())});
+            }
+            
             try {    
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(VistaMemoriaFIFO.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            
-            
         }
+        heats.setText(fifoA.getHeat()+" ");
+        fallos.setText(fifoA.getFallos()+" ");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
