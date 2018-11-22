@@ -31,7 +31,7 @@ public class Main {
         Ventana ventana = new Ventana("Menu principal",new Dimension(500,450), mp);
         while(true){
             if(mp.getOpcion()==3){
-                    ventana.cambiarPanel("FIFO Memoria", new Dimension(800,450), fifo);
+                    ventana.cambiarPanel("FIFO Memoria", new Dimension(900,600), fifo);
                     mp.setOpcion(0);
             }
             if(mp.getOpcion()==5){
@@ -45,14 +45,17 @@ public class Main {
             if(fifo.isAtras()){
                 ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
                 fifo.setAtras(false);
+                fifo=new VistaMemoriaFIFO();
             }
             if(fcfs.isAtras()){
                 ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
                 fcfs.setAtras(false);
+                fcfs = new VistaFCFSdico();
             }
             if(ssf.isAtras()){
                 ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
                 ssf.setAtras(false);
+                ssf=new VistaSSFDisco();
             }
             try {
                 Thread.sleep(30);
