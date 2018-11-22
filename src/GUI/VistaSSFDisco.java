@@ -201,9 +201,10 @@ public class VistaSSFDisco extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
-        //this.grafico.setIcon( new GraficoSSF( this.jPanel1.getSize() ) );
-        //this.grafico.setText("");
-        //ssf.desplazamiento();
+        ssf.buscar(ssf.lista, ssf.head);
+        this.grafico.setIcon( new GraficoSSF( this.jPanel1.getSize(), ssf ) );
+        this.grafico.setText("");
+
     }//GEN-LAST:event_CalcularActionPerformed
 
     private void recibirDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recibirDataActionPerformed
