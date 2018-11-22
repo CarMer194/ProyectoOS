@@ -51,6 +51,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
         jLabel1.setText("Proyecto Sistemas Operativos");
 
         jButton1.setText("Tiempo mas corto a continuación");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Calendarización por Lotería");
 
@@ -116,7 +121,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         opcion=3;
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -128,6 +133,10 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
        opcion=6;
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       opcion=1;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

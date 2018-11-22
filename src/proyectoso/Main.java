@@ -10,6 +10,7 @@ import GUI.Ventana;
 import GUI.VistaFCFSdico;
 import GUI.VistaMemoriaFIFO;
 import GUI.VistaSSFDisco;
+import GUI.VistaTMCC;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,12 +25,17 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        VistaTMCC tmcc = new VistaTMCC();
         MenuPrincipal mp = new MenuPrincipal();
         VistaMemoriaFIFO fifo = new VistaMemoriaFIFO();
         VistaFCFSdico fcfs = new VistaFCFSdico();
         VistaSSFDisco ssf = new VistaSSFDisco();
         Ventana ventana = new Ventana("Menu principal",new Dimension(500,450), mp);
         while(true){
+            if(mp.getOpcion()==1){
+                    ventana.cambiarPanel("Tiempo Más Corto a Continuación", new Dimension(650,450), tmcc);
+                    mp.setOpcion(0);
+            }
             if(mp.getOpcion()==3){
                     ventana.cambiarPanel("FIFO Memoria", new Dimension(900,600), fifo);
                     mp.setOpcion(0);
@@ -41,6 +47,11 @@ public class Main {
             if(mp.getOpcion()==6){
                 ventana.cambiarPanel("SSF Disco", new Dimension(550,450), ssf);
                 mp.setOpcion(0);
+            }
+            if(tmcc.isAtras()){
+                ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
+                tmcc.setAtras(false);
+                tmcc=new VistaTMCC();
             }
             if(fifo.isAtras()){
                 ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
