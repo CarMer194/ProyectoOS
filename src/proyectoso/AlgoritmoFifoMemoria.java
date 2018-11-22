@@ -30,7 +30,7 @@ public class AlgoritmoFifoMemoria {
     
     public void agregarElemento(Integer numero){
         System.out.println("numero: "+numero);
-        if(!cola.contains(cola) && contador<limite){
+        if(!cola.contains(numero) && contador<limite){
             cola.add(numero);
             if(!disco.containsValue(numero)){
                 disco.put(contadorHash, numero);
@@ -58,6 +58,7 @@ public class AlgoritmoFifoMemoria {
             System.out.println("Entro 3");
             if(disco.containsValue(numero) && bitM.get(numero)==true ){
                 bitM.replace(numero, Boolean.FALSE);
+                fallos++;
             }
             else{
                 heat++;
@@ -141,7 +142,6 @@ public class AlgoritmoFifoMemoria {
     public int getFallos() {
         return fallos;
     }
-    
     
     
 }
