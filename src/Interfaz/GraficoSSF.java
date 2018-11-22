@@ -25,9 +25,9 @@ import proyectoso.AlgoritmoSSF;
  * @author daniel
  */
 public class GraficoSSF extends ImageIcon{
-    AlgoritmoSSF ssf;
-    public GraficoSSF (Dimension d){
-        ssf = new AlgoritmoSSF();
+    AlgoritmoSSF ssf1;
+    public GraficoSSF (Dimension d, AlgoritmoSSF ssf){
+        ssf1 = ssf;
         XYDataset xydataset = xyDataset();
         JFreeChart jfreechart = ChartFactory.createXYLineChart(
         "Ingresos semanales" , "1ra semana del mes de Junio", "Ingresos en euros",  
@@ -60,15 +60,10 @@ public class GraficoSSF extends ImageIcon{
         XYSeries sIngresos = new XYSeries("Ingresos");
       
         //serie #1
-        sIngresos.add( 1, 54);
-        sIngresos.add( 2, 41);
-        sIngresos.add( 3, 34);
-        sIngresos.add( 4, 11);
-        sIngresos.add( 5, 60);
-        sIngresos.add( 6, 79);
-        sIngresos.add( 7, 50);
-        sIngresos.add( 8, 114);
-        sIngresos.add( 9, 176);
+        
+        for(int i = 0; i < ssf1.resultado.size(); i++){
+            sIngresos.add(i+1, ssf1.resultado.get(i));
+        }
 
         XYSeriesCollection xyseriescollection =  new XYSeriesCollection();
         xyseriescollection.addSeries( sIngresos );        
