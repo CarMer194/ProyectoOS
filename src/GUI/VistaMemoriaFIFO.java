@@ -10,14 +10,23 @@ package GUI;
  * @author Carlos
  */
 public class VistaMemoriaFIFO extends javax.swing.JPanel {
+    boolean atras=false;
 
+    public boolean isAtras() {
+        return atras;
+    }
+
+    public void setAtras(boolean atras) {
+        this.atras = atras;
+    }
+    
     /**
      * Creates new form VistaMemoriaFIFO
      */
     public VistaMemoriaFIFO() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +52,11 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
 
         jButton1.setText("Atras");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Agregar Peticion");
 
@@ -144,6 +158,10 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        atras=true;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,7 +10,17 @@ package GUI;
  * @author daniel
  */
 public class VistaSSFDisco extends javax.swing.JPanel {
+    boolean atras=false;
 
+    public boolean isAtras() {
+        return atras;
+    }
+
+    public void setAtras(boolean atras) {
+        this.atras = atras;
+    }
+    
+    
     /**
      * Creates new form NewJPanel
      */
@@ -43,6 +53,11 @@ public class VistaSSFDisco extends javax.swing.JPanel {
         jLabel1.setText("Agregar Track:");
 
         jButton1.setText("Atras");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Head:");
 
@@ -159,6 +174,10 @@ public class VistaSSFDisco extends javax.swing.JPanel {
     private void btnHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeadActionPerformed
         head1.setText(head.getText());
     }//GEN-LAST:event_btnHeadActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        atras=true;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
