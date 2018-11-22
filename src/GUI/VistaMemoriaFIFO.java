@@ -142,6 +142,11 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
         jScrollPane3.setViewportView(paginaDisco);
 
         tipoPeticion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lectura", "Escritura" }));
+        tipoPeticion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoPeticionActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Resultados:");
@@ -278,6 +283,10 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
     private void numeropeticionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeropeticionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numeropeticionActionPerformed
+
+    private void tipoPeticionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoPeticionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoPeticionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
