@@ -46,13 +46,14 @@ public class AlgoritmoSSF {
     }
 
     int min(Stack<Integer> lista) {
-        int value = 0;
+        int valor = 0, value = 0;
         for (Integer i : lista) {
             if (value < i) {
                 value = i;
+                valor = lista.indexOf(value);
             }
         }
-        return value;
+        return valor;
     }
 
     public void buscar(Stack<Integer> lista, int head) {
@@ -61,9 +62,9 @@ public class AlgoritmoSSF {
             resultado.push(head);
             desplazamiento(lista,head);
             int index = min(des);
-            recorrido += index;
-            head = index;
-            lista.pop();
+            recorrido += lista.indexOf(index);
+            head = lista.indexOf(index);
+            //lista.pop();
         }
         //resultado
     }
