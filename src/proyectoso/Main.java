@@ -41,7 +41,7 @@ public class Main {
                     mp.setOpcion(0);
             }
             if(mp.getOpcion()==5){
-                ventana.cambiarPanel("FCFS Disco", new Dimension(550,450), fcfs);
+                ventana.cambiarPanel("FCFS Disco", new Dimension(800,600), fcfs);
                 mp.setOpcion(0);
             }
             if(mp.getOpcion()==6){

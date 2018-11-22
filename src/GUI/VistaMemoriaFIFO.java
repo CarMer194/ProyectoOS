@@ -6,7 +6,10 @@
 package GUI;
 
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import proyectoso.AlgoritmoFifoMemoria;
 
 /**
  *
@@ -15,8 +18,11 @@ import javax.swing.table.DefaultTableModel;
 public class VistaMemoriaFIFO extends javax.swing.JPanel {
     boolean atras=false;
     DefaultTableModel model;
+    DefaultTableModel memoriaModel;
+    DefaultTableModel discoModel;
     Stack<Integer> colapeticiones;
     Stack<String> tipocolapeticiones;
+    AlgoritmoFifoMemoria fifoA;
 
     public boolean isAtras() {
         return atras;
@@ -32,6 +38,11 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
     public VistaMemoriaFIFO() {
         initComponents();
         model=(DefaultTableModel) peticionesTabla.getModel();
+        memoriaModel=(DefaultTableModel) paginasMemoria.getModel();
+        discoModel= (DefaultTableModel) paginaDisco.getModel();
+        fifoA= new AlgoritmoFifoMemoria();
+        tipocolapeticiones= new Stack();
+        colapeticiones=new Stack();
     }
     
     /**
@@ -159,6 +170,11 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("Comenzar algoritmo");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Agregar numero de paginas:");
 
@@ -275,6 +291,8 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String temp=tipoPeticion.getSelectedItem().toString();
+        System.out.println(temp);
         model.insertRow(model.getRowCount(), new Object[]{numeropeticion.getSelectedItem(),tipoPeticion.getSelectedItem().toString()});
         tipocolapeticiones.add(tipoPeticion.getSelectedItem().toString());
         colapeticiones.add((Integer) numeropeticion.getSelectedItem());
@@ -287,6 +305,41 @@ public class VistaMemoriaFIFO extends javax.swing.JPanel {
     private void tipoPeticionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoPeticionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoPeticionActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        fifoA.setLimite((Integer) numeropaginas.getSelectedItem());
+        //System.out.println("limite: "+fifoA.getLimite());
+        while(!tipocolapeticiones.isEmpty() && !colapeticiones.empty()){
+            for(int i= memoriaModel.getRowCount()-1; i>-1;i--){
+                memoriaModel.removeRow(i);
+            }
+            //System.out.println("contador "+memoriaModel.getRowCount());
+            for(int i=0; i<memoriaModel.getRowCount();i++){
+                memoriaModel.removeRow(i);
+            }
+            String temp=tipocolapeticiones.pop();
+            if(temp.equalsIgnoreCase("Lectura")){
+                fifoA.agregarElemento(colapeticiones.pop());
+            }
+            if(temp.equalsIgnoreCase("Escritura")){
+                fifoA.escritura(colapeticiones.pop());
+            }
+            System.out.println(fifoA.getContador()+" ");
+            for(int i=0;i<fifoA.getContador();i++){
+                memoriaModel.insertRow(memoriaModel.getRowCount(), new Object[]{fifoA.getCola().get(i),fifoA.getBitM().get(fifoA.getCola().get(i))});
+            }
+            //discoModel.insertRow(discoModel.getRowCount(), new Object[]{});
+            try {    
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(VistaMemoriaFIFO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

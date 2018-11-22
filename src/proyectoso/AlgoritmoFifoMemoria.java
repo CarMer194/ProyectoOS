@@ -16,7 +16,7 @@ public class AlgoritmoFifoMemoria {
     Stack<Integer> cola;
     HashMap <Integer,Integer> disco;
     HashMap <Integer,Boolean> bitM;
-    int contador, contadorHash, heat, fallos;
+    int contador, contadorHash, heat, fallos,limite;
 
     public AlgoritmoFifoMemoria() {
         cola= new Stack();
@@ -26,16 +26,18 @@ public class AlgoritmoFifoMemoria {
     }
     
     
-    void agregarElemento(Integer numero){
-        if(cola.search(numero)==-1 && contador<4){
+    public void agregarElemento(Integer numero){
+        if(cola.search(numero)==-1 && contador<limite){
             cola.add(numero);
             disco.put(contadorHash, numero);
             bitM.put(numero, Boolean.FALSE);
             contador++;
             contadorHash++;
             fallos++;
+            System.out.println("Entro 1");
         }
-        else if(cola.search(numero)==-1 && contador==4){
+        else if(cola.search(numero)==-1 && contador==limite){
+            System.out.println("Entro 2");
             if(!disco.containsValue(numero)){
                 disco.put(contadorHash, cola.pop());
                 bitM.put(numero, Boolean.FALSE);
@@ -44,11 +46,12 @@ public class AlgoritmoFifoMemoria {
                 cola.pop();
             }
             cola.add(numero);
-            contador++;
+            //contador++;
             contadorHash++;
             fallos++;
         }
         else{
+            System.out.println("Entro 3");
             if(disco.containsValue(numero) && bitM.get(numero)==true ){
                 bitM.replace(numero, Boolean.FALSE);
             }
@@ -58,26 +61,70 @@ public class AlgoritmoFifoMemoria {
         }
     }
     
-    void escritura(Integer num){
+    public void escritura(Integer num){
         bitM.replace(num, Boolean.TRUE);
     }
     
-    void peticiones(Stack<String> tipo, Stack<Integer> num){
+    private void peticiones(Stack<String> tipo, Stack<Integer> num){
         while(!tipo.empty() && !num.empty() ){
-            if(tipo.pop().equalsIgnoreCase("L")){
+            if(tipo.pop().equalsIgnoreCase("Lectura")){
                 agregarElemento(num.pop());
             }
-            if(tipo.pop().equalsIgnoreCase("E")){
+            if(tipo.pop().equalsIgnoreCase("Escritura")){
                 escritura(num.pop());
             }
         }
     }
     
-    void getPaginas(){
-        
+    Object getMemoria(){
+        return new Object[]{};
     }
-    void getDisco(){
-        
+    
+    
+    Integer getDisco(int id){
+        return disco.get(id);
     }
+
+    public int getLimite() {
+        return limite;
+    }
+
+    public void setLimite(int limite) {
+        this.limite = limite;
+    }
+
+    public Stack<Integer> getCola() {
+        return cola;
+    }
+
+    public void setCola(Stack<Integer> cola) {
+        this.cola = cola;
+    }
+
+    public HashMap<Integer, Integer> getDisco() {
+        return disco;
+    }
+
+    public void setDisco(HashMap<Integer, Integer> disco) {
+        this.disco = disco;
+    }
+
+    public HashMap<Integer, Boolean> getBitM() {
+        return bitM;
+    }
+
+    public void setBitM(HashMap<Integer, Boolean> bitM) {
+        this.bitM = bitM;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+    
+    
     
 }
