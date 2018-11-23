@@ -6,6 +6,7 @@
 package proyectoso;
 
 import GUI.MenuPrincipal;
+import GUI.Simulacion;
 import GUI.Ventana;
 import GUI.VistaFCFSdico;
 import GUI.VistaMemoriaFIFO;
@@ -33,9 +34,14 @@ public class Main {
         VistaSSFDisco ssf = new VistaSSFDisco();
         VistaNFU nfu = new VistaNFU();
         Ventana ventana = new Ventana("Menu principal",new Dimension(500,450), mp);
+        Simulacion loteria = new Simulacion();
         while(true){
             if(mp.getOpcion()==1){
                     ventana.cambiarPanel("Tiempo Más Corto a Continuación", new Dimension(650,450), tmcc);
+                    mp.setOpcion(0);
+            }
+            if(mp.getOpcion()==2){
+                    ventana.cambiarPanel("Calendarizacion por Loteria", new Dimension(650,450), loteria);
                     mp.setOpcion(0);
             }
             if(mp.getOpcion()==3){
@@ -58,6 +64,11 @@ public class Main {
                 ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
                 tmcc.setAtras(false);
                 tmcc=new VistaTMCC();
+            }
+            if(loteria.isAtras()){
+                ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
+                loteria.setAtras(false);
+                loteria=new Simulacion();
             }
             if(fifo.isAtras()){
                 ventana.cambiarPanel("Menu principal", new Dimension(500,450), mp);
