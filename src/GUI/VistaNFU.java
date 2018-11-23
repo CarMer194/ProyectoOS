@@ -137,10 +137,10 @@ public class VistaNFU {
 		}
 
 		/**
-		 * Prompt/Reads number of pages in logical memory
-		 * Prompt/Reads number of pages in physical memory
-		 * Prompt/Reads page-ref string
-		 * Validated the page string
+		 * Lectura de numeros de paginas en memoria logica
+		 * Lectura de numeros de pagina en memoria fisica
+		 * Lectura de la referencia de pagina
+		 * Validacion
 		 */
 		while(loop){
 			option = 4;
