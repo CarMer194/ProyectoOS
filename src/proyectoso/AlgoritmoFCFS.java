@@ -6,19 +6,20 @@
 package proyectoso;
 import java.util.Stack;
 import java.lang.Math.*;
+import java.util.LinkedList;
 /**
  *
  * @author Carlos
  */
 public class AlgoritmoFCFS {
-    Stack<Integer> cola;
+    LinkedList<Integer> cola;
     int posinicial, desplazamiento,desprom,desplaTiempo;
 
     public AlgoritmoFCFS(int posinicial, int desplazamiento, int desplaTiempo) {
         this.posinicial = posinicial;
         this.desplazamiento = desplazamiento;
         this.desplaTiempo = desplaTiempo;
-        cola=new Stack();
+        cola=new LinkedList();
     }
     
     void agregarAcola(Integer numero){
@@ -27,7 +28,7 @@ public class AlgoritmoFCFS {
     }
     
     int calcularDesplazamiento(){
-        desprom=Math.abs(desplazamiento - cola.pop());
+        desprom=Math.abs(desplazamiento - cola.poll());
         return desprom; 
     }
     
@@ -35,13 +36,15 @@ public class AlgoritmoFCFS {
         desprom=desprom/desplaTiempo;
     }
 
-    public Stack<Integer> getCola() {
+    public LinkedList<Integer> getCola() {
         return cola;
     }
 
-    public void setCola(Stack<Integer> cola) {
+    public void setCola(LinkedList<Integer> cola) {
         this.cola = cola;
     }
+
+    
 
     public int getPosinicial() {
         return posinicial;
