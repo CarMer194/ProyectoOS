@@ -17,6 +17,7 @@ public class AlgoritmoSSF {
 
     public int head;
     public int desplazamiento;
+    public int recorrido;
     public ArrayList<Integer> lista;
     public ArrayList<Integer> des;
     public ArrayList<Integer> resultado;
@@ -42,8 +43,9 @@ public class AlgoritmoSSF {
     public void desplazamiento(ArrayList<Integer> lista, int head) {
         for (Integer i : lista){
             des.add(Math.abs(i-head));
-            System.out.println("Des: " + des);
+            System.out.println("Resta: " + i + "-" + head);
         }
+        System.out.println("Desplazamiento: " + des);
     }
 
     int min(ArrayList<Integer> lista) {
@@ -57,21 +59,20 @@ public class AlgoritmoSSF {
     }
 
     public void buscar(ArrayList<Integer> lista, int head) {
-        int recorrido = 0;
+        recorrido = 0;
         resultado.add(head);
         int a = lista.size();
         for(int i = 0; i< a; i++){
             desplazamiento(lista,head);
             int index = min(des);
-            System.out.println("Index: " + index);
             recorrido += index;
+            System.out.println("Recorrido: " + recorrido);
             head = lista.get(des.indexOf(index));
             resultado.add(head);
             lista.remove(des.indexOf(index));
             des.clear();
-            System.out.println("Head: " + head);
-            //lista.remove(head);
         }
         System.out.println("Lista: " + resultado);
+        System.out.println("Recorrido Total: " + recorrido);
     }
 }
