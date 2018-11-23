@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.util.LinkedList;
 import java.util.Stack;
 import javax.swing.table.DefaultTableModel;
 import proyectoso.AlgoritmoFCFS;
@@ -16,7 +17,7 @@ import proyectoso.AlgoritmoFCFS;
 public class VistaFCFSdico extends javax.swing.JPanel {
     boolean atras=false;
     AlgoritmoFCFS fcfs;
-    Stack<Integer> cola;
+    LinkedList<Integer> cola;
     DefaultTableModel modelo;
 
     public boolean isAtras() {
@@ -34,7 +35,7 @@ public class VistaFCFSdico extends javax.swing.JPanel {
     public VistaFCFSdico() {
         initComponents();
         modelo= (DefaultTableModel) jTable1.getModel();
-        
+        cola= new LinkedList();
     }
 
     /**
