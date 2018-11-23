@@ -112,13 +112,8 @@ public class VistaNFU {
 	}
 
 	/**
-	 * This is the Main class 
-	 * Verifies if the program is executed through interactive or batch mode
-	 * An option to select the page replacement algorithm
-	 * @param args
-	 * if no argument - interactive mode
-	 * if one argument - batch mode
-	 */
+	 * Clase Principal 
+	*/
 	public static void main(String args[]){
 		boolean loop=true;
 		int option = 0;
