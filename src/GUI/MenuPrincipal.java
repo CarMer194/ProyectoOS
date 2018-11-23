@@ -67,6 +67,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
         });
 
         jButton4.setText("NFU Memoria");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("FCFS Disco");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +142,10 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        opcion=1;
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        opcion=4;
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
