@@ -19,18 +19,15 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import proyectoso.AlgoritmoSSF;
-/**
- *
- * @author daniel
- */
-public class GraficoSSF extends ImageIcon{
-    AlgoritmoSSF ssf1;
-    public GraficoSSF (Dimension d, AlgoritmoSSF ssf){
-        ssf1 = ssf;
+import proyectoso.AlgoritmoFCFS;
+
+public class GraficoFCFS extends ImageIcon{
+    AlgoritmoFCFS fcfs1;
+    public GraficoFCFS (Dimension d, AlgoritmoFCFS fcfs){
+        fcfs1 = fcfs;
         XYDataset xydataset = xyDataset();
         JFreeChart jfreechart = ChartFactory.createXYLineChart(
-        "SSF" , "Iteraciones", "Cilindros",  
+        "FCFS" , "Iteraciones", "Cilindros",  
         xydataset, PlotOrientation.HORIZONTAL,  true, true, false);               
 
         //Acá se personaliza el gráfico
@@ -52,21 +49,22 @@ public class GraficoSSF extends ImageIcon{
         //se crea la imagen y se asigna a la clase ImageIcon
         BufferedImage bufferedImage  = jfreechart.createBufferedImage(d.width,d.height);
         this.setImage(bufferedImage);
+        
     }
     
-     private XYDataset xyDataset()
-    {
+    private XYDataset xyDataset(){
         //se declaran las series y se llenan los datos
-        XYSeries ssfGra = new XYSeries("Peticiones");
+        XYSeries fcfsGra = new XYSeries("Peticiones");
       
         
-        for(int i = 0; i < ssf1.resultado.size(); i++){
-            ssfGra.add(i, ssf1.resultado.get(i));
+        for(int i = 0; i < fcfs1.cola.size(); i++){
+            fcfsGra.add(i, fcfs1.cola.get(i));
         }
 
         XYSeriesCollection xyseriescollection =  new XYSeriesCollection();
-        xyseriescollection.addSeries(ssfGra);        
+        xyseriescollection.addSeries(fcfsGra);        
         
         return xyseriescollection;
     }
 }
+

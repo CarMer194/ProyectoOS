@@ -12,28 +12,41 @@ import java.util.LinkedList;
  * @author Carlos
  */
 public class AlgoritmoFCFS {
-    LinkedList<Integer> cola;
-    int posinicial, desplazamiento,desprom,desplaTiempo;
-
-    public AlgoritmoFCFS(int posinicial, int desplazamiento, int desplaTiempo) {
-        this.posinicial = posinicial;
-        this.desplazamiento = desplazamiento;
-        this.desplaTiempo = desplaTiempo;
-        cola=new LinkedList();
-    }
+    public LinkedList<Integer> cola;
+    Integer posinicial, desplazamiento,desprom,desplaTiempo;
     
+    public AlgoritmoFCFS(){
+        cola=new LinkedList();
+        posinicial=0;
+        desprom=1;
+        desplazamiento=0;
+        desplaTiempo=1;
+    }
+   
     void agregarAcola(Integer numero){
         cola.add(numero);
         
     }
     
-    int calcularDesplazamiento(){
-        desprom=Math.abs(desplazamiento - cola.poll());
-        return desprom; 
+    public Integer calcularDesplazamiento(){
+        int actual;
+        while(!cola.isEmpty()){
+            if(posinicial!=-1){
+               desplazamiento=Math.abs(posinicial-cola.peek()); 
+               System.out.println(desplazamiento+"   1");
+            }
+            actual=cola.poll();
+            if(!cola.isEmpty())
+            desplazamiento=Math.abs(actual-cola.peek())+desplazamiento;
+            posinicial=-1;
+            System.out.println(desplazamiento);
+        }
+        return desplazamiento; 
     }
     
-    void desplazamientoProm(){
-        desprom=desprom/desplaTiempo;
+    public Integer desplazamientoProm(){
+        desprom=desplazamiento*desplaTiempo;
+        return desprom;
     }
 
     public LinkedList<Integer> getCola() {
@@ -50,7 +63,7 @@ public class AlgoritmoFCFS {
         return posinicial;
     }
 
-    public void setPosinicial(int posinicial) {
+    public void setPosinicial(Integer posinicial) {
         this.posinicial = posinicial;
     }
 
@@ -58,7 +71,7 @@ public class AlgoritmoFCFS {
         return desplazamiento;
     }
 
-    public void setDesplazamiento(int desplazamiento) {
+    public void setDesplazamiento(Integer desplazamiento) {
         this.desplazamiento = desplazamiento;
     }
 
@@ -74,7 +87,7 @@ public class AlgoritmoFCFS {
         return desplaTiempo;
     }
 
-    public void setDesplaTiempo(int desplaTiempo) {
+    public void setDesplaTiempo(Integer desplaTiempo) {
         this.desplaTiempo = desplaTiempo;
     }
     
