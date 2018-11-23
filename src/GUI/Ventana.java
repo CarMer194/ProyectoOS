@@ -37,4 +37,8 @@ public class Ventana extends javax.swing.JFrame{
         view.setFocusable(true);
         view.requestFocus();
     }
+
+    public void cambiarPanel(String nfu_Memoria, Dimension dimension, VistaNFU nfu) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

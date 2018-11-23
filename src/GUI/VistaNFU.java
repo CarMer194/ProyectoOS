@@ -177,7 +177,7 @@ public class VistaNFU {
 					System.out.println("\nERROR: Invalid Input");
 					break;
 				}
-				((AlgoritmoNFU) nfuObject).NFU();
+
 			}
 
 			else{
