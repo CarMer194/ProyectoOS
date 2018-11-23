@@ -6,6 +6,8 @@
 package GUI;
 
 import Interfaz.GraficoSSF;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import proyectoso.AlgoritmoSSF;
 
 /**
@@ -55,7 +57,14 @@ public class VistaSSFDisco extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         grafico = new javax.swing.JLabel();
 
-        jLabel1.setText("Agregar Track:");
+        head1.setEditable(false);
+        head1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                head1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Petición:");
 
         jButton1.setText("Atras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +73,7 @@ public class VistaSSFDisco extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Head:");
+        jLabel2.setText("Pos. Inicial:");
 
         btnTrack.setText("Add");
         btnTrack.addActionListener(new java.awt.event.ActionListener() {
@@ -86,13 +95,14 @@ public class VistaSSFDisco extends javax.swing.JPanel {
             }
         });
 
-        Calcular.setText("Calculate:");
+        Calcular.setText("Calcular:");
         Calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CalcularActionPerformed(evt);
             }
         });
 
+        recibirData.setEditable(false);
         recibirData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recibirDataActionPerformed(evt);
@@ -107,7 +117,7 @@ public class VistaSSFDisco extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(grafico)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 538, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,31 +136,33 @@ public class VistaSSFDisco extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Calcular)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnHead, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(jLabel1)
-                                        .addGap(24, 24, 24)
-                                        .addComponent(enviarData, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnTrack, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                    .addComponent(enviarData))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnHead, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                                    .addComponent(btnTrack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(98, 98, 98)
+                                        .addGap(89, 89, 89)
                                         .addComponent(head1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
+                                        .addGap(26, 26, 26)
                                         .addComponent(recibirData, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 50, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Calcular)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,9 +191,15 @@ public class VistaSSFDisco extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTrackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackActionPerformed
-        ssf.add(Integer.parseInt(enviarData.getText()));
-        System.out.println("Data: " + ssf.lista);
-        recibirData.setText(recibirData.getText()+ ',' + enviarData.getText());
+        if(Integer.parseInt(enviarData.getText())<200){
+            ssf.add(Integer.parseInt(enviarData.getText()));          
+            System.out.println("Data: " + ssf.lista);
+            recibirData.setText(recibirData.getText()+ ' ' + enviarData.getText());
+        } else{
+            Component frame = null;
+            JOptionPane.showMessageDialog(frame, "Peticion tiene que ser menor a 200.");
+        }
+
         
     }//GEN-LAST:event_btnTrackActionPerformed
 
@@ -192,7 +210,7 @@ public class VistaSSFDisco extends javax.swing.JPanel {
     private void btnHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeadActionPerformed
         head1.setText(head.getText());
         ssf.head = (Integer.parseInt(head.getText()));
-        System.out.println("Head: " + ssf.head);
+        System.out.println("Inicio: " + ssf.head);
     }//GEN-LAST:event_btnHeadActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -208,8 +226,12 @@ public class VistaSSFDisco extends javax.swing.JPanel {
     }//GEN-LAST:event_CalcularActionPerformed
 
     private void recibirDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recibirDataActionPerformed
-        // TODO add your handling code here:
+        recibirData.setEnabled(false);
     }//GEN-LAST:event_recibirDataActionPerformed
+
+    private void head1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_head1ActionPerformed
+        head1.setEnabled(false);
+    }//GEN-LAST:event_head1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

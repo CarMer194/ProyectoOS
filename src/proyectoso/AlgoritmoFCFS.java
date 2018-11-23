@@ -12,13 +12,17 @@ import java.util.LinkedList;
  * @author Carlos
  */
 public class AlgoritmoFCFS {
-    LinkedList<Integer> cola;
+    public LinkedList<Integer> cola;
     int posinicial, desplazamiento,desprom,desplaTiempo;
 
     public AlgoritmoFCFS(int posinicial, int desplazamiento, int desplaTiempo) {
         this.posinicial = posinicial;
         this.desplazamiento = desplazamiento;
         this.desplaTiempo = desplaTiempo;
+        cola=new LinkedList();
+    }
+
+    public AlgoritmoFCFS() {
         cola=new LinkedList();
     }
     
