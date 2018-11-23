@@ -11,16 +11,16 @@ import javax.swing.table.AbstractTableModel;
 public class AlgoritmoTMCC extends AbstractTableModel {
 
     ArrayList<Float>[] cola;
-    boolean[] usados;
-    boolean[] activos;
-    boolean[] terminados;
+    boolean[] usados;//procesos que tienen rafagas
+    boolean[] activos;//los que ya estan listos y estan ene la cola
+    boolean[] terminados;//procesos que ya terminaron
     float[] estimaciones;
-    float[] listoEn;
+    float[] listoEn;//instante en el que esta listo cada proceso
     float[] tRetorno;
     float[] tEspera;
     float[] tRespuesta;
 
-    int contador;
+    int contador;//cambios de contexto
     ArrayList<String[]> historial;
 
     private float a;
@@ -54,7 +54,7 @@ public class AlgoritmoTMCC extends AbstractTableModel {
             return false;
         }
         historial.add(new String[]{"0", "0", "0", "0"});
-        fireTableDataChanged();
+        fireTableDataChanged();// actualizar la tabla
         contador++;
         oldTiempo = tiempo;
         tiempo += cola[actual].remove(0);
@@ -152,7 +152,7 @@ public class AlgoritmoTMCC extends AbstractTableModel {
         return new float[]{tRetorno[proceso], tEspera[proceso], tRespuesta[proceso]};
     }
 
-    String getProcesoString(int proceso) {
+    /*String getProcesoString(int proceso) {
         if (usados[proceso]) {
             sb = new StringBuilder();
             for (Float t : cola[proceso]) {
@@ -164,7 +164,7 @@ public class AlgoritmoTMCC extends AbstractTableModel {
         } else {
             return "";
         }
-    }
+    }*/
 
     @Override
     public int getRowCount() {
@@ -205,11 +205,6 @@ public class AlgoritmoTMCC extends AbstractTableModel {
         historial.get(rowIndex)[columnIndex] = String.valueOf(aValue);
         fireTableCellUpdated(rowIndex, columnIndex);
         //fireTableDataChanged();
-    }
-
-    @Override
-    public void removeTableModelListener(TableModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
