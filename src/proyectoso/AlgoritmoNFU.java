@@ -6,15 +6,13 @@
 package proyectoso;
 
 import java.util.*;
+import GUI.VistaNFU;
 /**
  *
  * @author rjmo_
  */
 
-public class AlgoritmoNFU {
-int noOfPages, noOfFrames, checkEOStr, lengthOfString;
-int[] pageString = new int[1024];
-class nfu{
+class AlgoritmoNFU extends VistaNFU{
 	int hitRate, pageFault, value, resultKey, min;
 	int pageToFrame(){
 		int count=0, index=0;
@@ -63,6 +61,4 @@ class nfu{
 		System.out.println("\nOUTPUT: \nHitRate: "+hitRate + "\nNo. of page requests: "+(lengthOfString-1));
 		return hitRate;
 	}
-}
-
 }

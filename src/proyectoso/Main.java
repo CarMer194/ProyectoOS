@@ -9,6 +9,7 @@ import GUI.MenuPrincipal;
 import GUI.Ventana;
 import GUI.VistaFCFSdico;
 import GUI.VistaMemoriaFIFO;
+import GUI.VistaNFU;
 import GUI.VistaSSFDisco;
 import GUI.VistaTMCC;
 import java.awt.Dimension;
@@ -30,6 +31,7 @@ public class Main {
         VistaMemoriaFIFO fifo = new VistaMemoriaFIFO();
         VistaFCFSdico fcfs = new VistaFCFSdico();
         VistaSSFDisco ssf = new VistaSSFDisco();
+        VistaNFU nfu = new VistaNFU();
         Ventana ventana = new Ventana("Menu principal",new Dimension(500,450), mp);
         while(true){
             if(mp.getOpcion()==1){
@@ -46,6 +48,10 @@ public class Main {
             }
             if(mp.getOpcion()==6){
                 ventana.cambiarPanel("SSF Disco", new Dimension(550,450), ssf);
+                mp.setOpcion(0);
+            }
+            if(mp.getOpcion()==4){
+                ventana.cambiarPanel("NFU Memoria", new Dimension(550,450), nfu);
                 mp.setOpcion(0);
             }
             if(tmcc.isAtras()){
