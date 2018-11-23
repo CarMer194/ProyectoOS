@@ -51,7 +51,7 @@ public class Main {
                 mp.setOpcion(0);
             }
             if(mp.getOpcion()==4){
-                ventana.cambiarPanel("NFU Memoria", new Dimension(550,450), nfu);
+                nfu.setVisible(true);
                 mp.setOpcion(0);
             }
             if(tmcc.isAtras()){

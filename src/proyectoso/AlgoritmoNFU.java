@@ -25,7 +25,7 @@ class AlgoritmoNFU extends VistaNFU{
 				count++; hitRate++;
 			}else{
 				min=9999;
-				if(frame.size()== noOfFrames){
+				if(frame.size()== NOfFrames){
 					Iterator<Integer> entries = frame.iterator();
 					while (entries.hasNext()) {
 						int fr, freq ; 

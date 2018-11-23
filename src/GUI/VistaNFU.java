@@ -14,7 +14,7 @@ import static jdk.nashorn.tools.ShellFunctions.input;
  * @author rjmo_
  */
 public class VistaNFU {
-    	public int noOfPages, noOfFrames, checkEOStr, lengthOfString;
+    	public int NOfPag, NOfFrames, checkEOStr, lengthOfString;
 	int option; static File file; static BufferedReader br;  static boolean value=false;
 	public int[] pageString = new int[1024];
 	Scanner input = new Scanner(System.in);
@@ -24,37 +24,37 @@ public class VistaNFU {
 	int getPageValues(){
 		if(value){
 			System.out.println("Enter number of pages in logical memory: ");
-			noOfPages = input.nextInt();
+			NOfPag = input.nextInt();
 		}
 		else{
 			try{
 				if ((line = br.readLine()) != null) {
-					noOfPages=Integer.parseInt(line);
-					System.out.println("number of pages in logical memory: "+noOfPages);
+					NOfPag=Integer.parseInt(line);
+					System.out.println("number of pages in logical memory: "+NOfPag);
 				}
 			}
 			catch(Exception e){
 			}
 		}
-		return noOfPages; 
+		return NOfPag; 
 	}
 
 	//Enter number of frames
 	int getFrameValues(){
 		if(value){
 			System.out.println("Enter number of frames in physical memory: ");
-			noOfFrames = input.nextInt();
+			NOfFrames = input.nextInt();
 		}else{
 			try{
 				if ((line = br.readLine()) != null) {
-					noOfFrames=Integer.parseInt(line);
-					System.out.println("number of frames in physical memory: "+noOfFrames);
+					NOfFrames=Integer.parseInt(line);
+					System.out.println("number of frames in physical memory: "+NOfFrames);
 				}
 			}
 			catch(Exception e){
 			}
 		}
-		return noOfFrames;
+		return NOfFrames;
 	}
 
 	//Read Page String
@@ -100,7 +100,7 @@ public class VistaNFU {
 	//ValidatePageString
 	int validatePageString(){
 		for(int i=0; i<lengthOfString && pageString[i]!=-1; i++){
-			if (pageString[i] < noOfPages && pageString[i] >= 0){
+			if (pageString[i] < NOfPag && pageString[i] >= 0){
 				//System.out.println("page1="+ pageString[i]+ " ");
 			}
 			else{
@@ -196,4 +196,8 @@ public class VistaNFU {
 
 		}
 	}
+
+    public void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
